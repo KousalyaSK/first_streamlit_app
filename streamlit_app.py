@@ -6,13 +6,11 @@ from urllib.error import URLError
 
 streamlit.title("My Mom's New Healthy Diner")
 
-  
 streamlit.header('Breakfast Favorites')
 streamlit.text('🥣 Omega 3 & Blueberry oatmeal')
 streamlit.text('🥗 Kale, Spinach & Rocket Smoothie')
 streamlit.text('🐔 Hard-Boiled Free-Range Egg')
 streamlit.text('🥑🍞 Avacado Toast')
-
 
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
@@ -47,22 +45,31 @@ except URLError as e:
     streamlit.error()
 
 #stop running the below commands
-streamlit.stop()
+#streamlit.stop()
 
 #creating connector internal stage
 #import snowflake.connector
-
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * from fruit_load_list")
-my_data_rows = my_cur.fetchall()
 streamlit.header("The fruits list contains:")
-streamlit.dataframe(my_data_rows)
+#snowflake function
+def get_fruit_load_list():
+    with my_cnx.cursor() as my_cur:
+         my_cur.execute("SELECT * from fruit_load_list")
+         return my_cur.fetchall()
+#add a button to load
+if streamlit.button('Get fruit load list'):
+    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+    my_data_rows = get_fruit_load_list()
+    streamlit.dataframe(my_data_rows)
 
 
 #allow user to add fruits
+def insert_row_snowflake(new fruit):
+    with my_cnx.cursor() as my_cur:
+    my_cur.execute("insert into fruit_load_list values('from streamlit')")
+    return "Thanks for adding" + new_fruit
 add_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
-streamlit.write('Thanks for adding ', add_my_fruit)
+if streamlit.button('Add a fruit to the list'):
+    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+    back_from_function = insert_row_snowflake(add_my_fruit)
+    streamlit.text(back_from_function)
 
-#if any one selected any fruit or added any text in app it will reflects in Snowflake
-my_cur.execute("insert into fruit_load_list values('from streamlit')")
