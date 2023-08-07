@@ -40,10 +40,6 @@ streamlit.dataframe(fruityvice_normalized)
 #creating connector internal stage
 import snowflake.connector
 
-streamlit.header("Fruityvice Fruit Advice!")
-fruit_choices = streamlit.text_input('What fruit would you like to add?','Kiwi')
-streamlit.write('The user entered ', fruit_choices)
-
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from fruit_load_list")
@@ -52,3 +48,6 @@ streamlit.header("The fruits list contains:")
 streamlit.dataframe(my_data_rows)
 
 
+#allow user to add fruits
+add_my_fruit = streamlit.text_input('What fruit would you like to add?','apple')
+streamlit.write('The user entered ', add_my_fruit)
