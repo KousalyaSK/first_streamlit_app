@@ -39,3 +39,4 @@ streamlit.dataframe(fruityvice_normalized)
 
 #creating connector internal stage
 import snowflake.connector
+
