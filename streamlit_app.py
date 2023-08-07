@@ -37,6 +37,9 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # display as table in screen?
 streamlit.dataframe(fruityvice_normalized)
 
+#stop running the below commands
+streamlit.stop()
+
 #creating connector internal stage
 import snowflake.connector
 
