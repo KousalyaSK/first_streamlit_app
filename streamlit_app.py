@@ -77,3 +77,7 @@ if streamlit.button('Add a fruit to the list'):
     my_cnx.close()  
     streamlit.text(back_from_function)
 
+
+my_file = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/smew/ISO_Countries_UTF8_pipe.csv")
+
+
