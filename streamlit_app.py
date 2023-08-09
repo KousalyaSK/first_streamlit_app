@@ -82,7 +82,7 @@ if streamlit.button('Add a fruit to the list'):
 #https://uni-lab-files.s3.us-west-2.amazonaws.com/smew/ISO_Countries_UTF8_pipe.csv
 
 import pandas
-my_file = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
+my_file = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/smew/ISO_Countries_UTF8_pipe.csv")
 streamlit.dataframe(my_file)
 
 
