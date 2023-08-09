@@ -77,10 +77,10 @@ if streamlit.button('Add a fruit to the list'):
     my_cnx.close()  
     streamlit.text(back_from_function)
 
-import pandas
+import pandas as my_file
 
-my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/smew/ISO_Countries_UTF8_pipe.csv")
-my_fruit_list = my_fruit_list.set_index('Fruit')
+my_file = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/smew/ISO_Countries_UTF8_pipe.csv")
+my_file = my_file.set_index('File')
 
 
 
