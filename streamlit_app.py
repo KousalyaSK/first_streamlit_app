@@ -85,8 +85,5 @@ df = pd.read_csv(url,index_col=0)
 
 print(df.head(5))
 
-import pandas as pd
-url = "https://uni-lab-files.s3.us-west-2.amazonaws.com/smew/ISO_Countries_UTF8_pipe.csv"
-df = pd.read_csv(url,index_col=0)
-#my_file = my_file.set_index('Table')
+
 
