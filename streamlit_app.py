@@ -77,7 +77,16 @@ if streamlit.button('Add a fruit to the list'):
     my_cnx.close()  
     streamlit.text(back_from_function)
 
-import pandas
-my_file = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/smew/ISO_Countries_UTF8_pipe.csv")
-my_file = my_file.set_index('Table')
+import pandas as pd
+
+url = 'https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes/blob/master/all/all.csv'
+df = pd.read_csv(url,index_col=0)
+#df = pd.read_csv(url)
+
+print(df.head(5))
+
+import pandas as pd
+url = "https://uni-lab-files.s3.us-west-2.amazonaws.com/smew/ISO_Countries_UTF8_pipe.csv"
+df = pd.read_csv(url,index_col=0)
+#my_file = my_file.set_index('Table')
 
